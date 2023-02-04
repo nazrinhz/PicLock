@@ -1,0 +1,18 @@
+<script>
+    const form = document.querySelector("button");
+    const inputs = document.querySelectorAll("input");
+    let data = [];
+    
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      inputs.forEach(input => {
+        data.push(input.value);
+        input.value = "";
+      });
+      console.log(data);
+    });
+    // Convert the array into a JSON string
+data = JSON.stringify();
+// Store the data in local storage
+localStorage.setItem('data', data);
+  </script>

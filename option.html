@@ -41,44 +41,40 @@ button[type="submit"] {
   <div class="container">
     <!-- Add form elements here -->
     <form>
-      <div class="form-row"> favorite Color:
-        <input type="text" placeholder="Enter text">
-        <button type="submit">Submit</button>
+      <div class="form-row"> Color:
+        <input type="text" placeholder="Enter text" >
       </div>
       <!-- Repeat the form-row 9 more times to get a total of 10 rows -->
-      <div class="form-row">favorite Car:
+      <div class="form-row"> Car:
         <input type="text" placeholder="Enter text">
-        <button type="submit">Submit</button>
       </div>
-      <!-- ... -->
-      <div class="form-row"> favorite drink
+      <div class="form-row"> Dog:
         <input type="text" placeholder="Enter text">
-        <button type="submit">Submit</button>
       </div>
-      <div class="form-row">favorite fruit
+      <div class="form-row"> Camera:
         <input type="text" placeholder="Enter text">
-        <button type="submit">Submit</button>
       </div>
-      <div class="form-row"> favorite movie
+      <div class="form-row"> Smartphone:
         <input type="text" placeholder="Enter text">
+      </div>
+      <div>
         <button type="submit">Submit</button>
       </div>
     </form>
   </div>
   <!-- Add JavaScript to handle form submissions here -->
   <script>
-    const form = document.querySelector("button");
-    const inputs = document.querySelectorAll("input");
-    let data = [];
     
-    form.addEventListener("submit", function(event) {
-      event.preventDefault();
-      inputs.forEach(input => {
-        data.push(input.value);
-        input.value = "";
-      });
-      console.log(data);
+    const form = document.querySelector("form");
+    const inputs = document.querySelectorAll("input");
+      form.addEventListener("submit", function(event) {
+        const data = [];
+        event.preventDefault();
+        inputs.forEach(element => {
+          data.push(element.value);
+        });
     });
+    
     // Convert the array into a JSON string
 data = JSON.stringify();
 // Store the data in local storage

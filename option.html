@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Add CSS styles here */
+    .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  width: 70%;
+  margin-right: 10px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Add form elements here -->
+    <form>
+      <div class="form-row"> favorite Color:
+        <input type="text" placeholder="Enter text">
+        <button type="submit">Submit</button>
+      </div>
+      <!-- Repeat the form-row 9 more times to get a total of 10 rows -->
+      <div class="form-row">favorite Car:
+        <input type="text" placeholder="Enter text">
+        <button type="submit">Submit</button>
+      </div>
+      <!-- ... -->
+      <div class="form-row"> favorite drink
+        <input type="text" placeholder="Enter text">
+        <button type="submit">Submit</button>
+      </div>
+      <div class="form-row">favorite fruit
+        <input type="text" placeholder="Enter text">
+        <button type="submit">Submit</button>
+      </div>
+      <div class="form-row"> favorite movie
+        <input type="text" placeholder="Enter text">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+  <!-- Add JavaScript to handle form submissions here -->
+  <script>
+    const form = document.querySelector("button");
+    const inputs = document.querySelectorAll("input");
+    let data = [];
+    
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      inputs.forEach(input => {
+        data.push(input.value);
+        input.value = "";
+      });
+      console.log(data);
+    });
+    // Convert the array into a JSON string
+data = JSON.stringify();
+// Store the data in local storage
+localStorage.setItem('data', data);
+  </script>
+</body>
+</html>

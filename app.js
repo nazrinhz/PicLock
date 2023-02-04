@@ -2,19 +2,19 @@ const searchInput = document.getElementById("searchInput");
 const searchButton = document.getElementById("searchButton");
 const results = document.getElementById("results");
 
-  const unsplashApiUrl1= "https://api.unsplash.com/search/photos?query=";
-  const unsplashApiUrl2= "&client_id=TaLA-OPuq61iCklOpWrwpiKeUSypXWOXhpcuo-p9iLo";
-  const unsplashApiRandom="https://api.unsplash.com/random";
+const unsplashApiUrl1= "https://api.unsplash.com/search/photos?query=";
+const unsplashApiUrl2= "&client_id=TaLA-OPuq61iCklOpWrwpiKeUSypXWOXhpcuo-p9iLo";
+const unsplashApiRandom="https://api.unsplash.com/random";
 
-  var stringArray = new Array();
-  // Get the data from local storage
-var data = localStorage.getItem('data');
+var stringArray = new Array();
+// Get the data from local storage
+var data = localStorage.getItem('datajsoned');
 
 // Parse the JSON string back into an array
-var array = JSON.parse(data);
+var imagesArray = JSON.parse(datajsoned);
 
 //edit from here
-imageArray.forEach(myChoices);
+imagesArray.forEach(myChoices);
 var imgArray;
 function myChoices(search){
   fetch(unsplashApiUrl+search+unsplashApiUrl2)

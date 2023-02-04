@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="welcome-screen">
+      <h1>PicLock</h1>
+      <a href="setup.html" id="go-button">Go</a>
+    </div>    
+  </body>
+  <script>
+    window.onload = function() {
+      var welcomeScreen = document.getElementById("welcome-screen");
+      welcomeScreen.style.display = "block";
+      welcomeScreen.style.opacity = 0;
+      var fadeIn = setInterval(function() {
+        if (welcomeScreen.style.opacity >= 1) {
+          clearInterval(fadeIn);
+        } else {
+          welcomeScreen.style.opacity = parseFloat(welcomeScreen.style.opacity) + 0.1;
+        }
+      }, 100);
+    };
+    
+  </script>
+</html>

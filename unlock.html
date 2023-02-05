@@ -14,26 +14,105 @@
             <h1 class="title">Select Images to Authenticate</h1>
             <div class="grid-container">
                 <div id="grid-item"></div>
-                <script>
-                    let gridContainer = document.getElementsByClassName("grid-container");
-                    let results = document.createElement("div");
-                    results.id = "grid-item";
-                    gridContainer[0].appendChild(results);
+                <!-- <script> -->
+                    <!-- // let gridContainer = document.getElementsByClassName("grid-container");
+                    // let results = document.createElement("div");
+                    // results.id = "grid-item";
+                    // gridContainer[0].appendChild(results);
                     
-                    let imageList = JSON.parse(localStorage.getItem("selectedImages"));
-                    console.log(imageList);
+                    // let imageList = JSON.parse(localStorage.getItem("selectedImages"));
+                    // console.log(imageList);
                     
-                    imageList.forEach(image => {
-                        console.log(image);
-                      const img = document.createElement("img");
-                      img.src = image.urls.small;
-                      img.alt = image.alt_description;
-                      img.style.width = "250px";
-                      img.style.height = "100px";
-                      img.style.margin = "10px";
-                      results.appendChild(img);
-                    });
-                    </script>
+                    // imageList.forEach(image => {
+                    //     console.log(image);
+                    //   const img = document.createElement("img");
+                    //   img.src = image.urls.small;
+                    //   img.alt = image.alt_description;
+                    //   img.style.width = "250px";
+                    //   img.style.height = "100px";
+                    //   img.style.margin = "10px";
+                    //   results.appendChild(img);
+                    // });
+
+                    // let unlockImages = [];
+                    // let images = document.querySelectorAll("img");
+                    // images.forEach(image){
+                    //     images.addEventListener("click", function() {
+                    //     img.style.opacity = 0.5;
+                    // }
+                    
+                    // }); -->
+                    <!-- </script> -->
+                    <script>
+                        let gridContainer = document.getElementsByClassName("grid-container");
+                        let results = document.createElement("div");
+                        results.id = "grid-item";
+                        gridContainer[0].appendChild(results);
+                        
+                        let selectedImages = [];
+                        
+                        let imageList = JSON.parse(localStorage.getItem("selectedImages"));
+                        let codeList = JSON.parse(localStorage.getItem("code"));
+                        console.log(imageList);
+                        let count=0, breakAll=0;
+                        imageList.forEach(image => {
+                          console.log(image);
+                          const img = document.createElement("img");
+                          img.src = image.urls.small;
+                          img.alt = image.alt_description;
+                          img.style.width = "250px";
+                          img.style.height = "100px";
+                          img.style.margin = "10px";
+                          results.appendChild(img);
+                          img.addEventListener("click", function() {
+                            count++;
+                            console.log(image);
+                            if(img.style.opacity === "0.5") {
+                              img.style.opacity = "1";
+                              let index = selectedImages.indexOf(image);
+                              if (index > -1) {
+                                selectedImages.splice(index, 1);
+                              }
+                            } else {
+                              img.style.opacity = "0.5";
+                              selectedImages.push(image);
+                            }
+                            if(count==3){
+                                unlock();
+                            }
+                          });
+                        });
+                        function unlock(){
+                            console.log(codeList.length);
+                            console.log(selectedImages.length);
+                            for (let i = 0; i < codeList.length; i++) {
+                                let breakAll = 0;
+                                for (let j = 0; j < selectedImages.length; j++) {
+                                    if (selectedImages[j].id === codeList[i].id) {
+                                    break;
+                                    } else if (selectedImages[j].id !== codeList[i].id && j === selectedImages.length - 1) {
+                                    breakAll = 1;
+                                    }
+                                }
+                                if (breakAll === 1) {
+                                    console.log("Not a match, try again!");
+                                    break;
+                                }
+                                if (i === codeList.length - 1 && breakAll === 0) {
+                                    console.log("Unlocked!");
+                                }
+                                }
+
+                            
+                        }
+                        
+                        localStorage.setItem("selectedImages", JSON.stringify(selectedImages));
+
+
+                        </script>
+                        
+                        
+                        
                     
                     
                     

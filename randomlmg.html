@@ -9,7 +9,7 @@
 
     <script>
       const unsplashApi = "https://api.unsplash.com/photos/random";
-      const accessKey = "MaiX9jKGROlvDynpbLNTMXGD4bbF6XT5yeUd15MOtl0"; // Replace with your Unsplash API access key
+      const accessKey = "TaLA-OPuq61iCklOpWrwpiKeUSypXWOXhpcuo-p9iLo"; // Replace with your Unsplash API access key
       const imageContainer = document.getElementById("image-container");
       const imageArray = [];
 
@@ -18,12 +18,12 @@
         const data = await response.json();
         const imageUrl = data.urls.regular;
 
-        const image = new Image();
-        image.src = imageUrl;
-        image.alt = data.alt_description;
-        image.style.width = "300px";
-        image.style.height = "300px";
-        image.style.margin = "10px";
+        // const image = new Image();
+        // image.src = imageUrl;
+        // image.alt = data.alt_description;
+        // image.style.width = "300px";
+        // image.style.height = "300px";
+        // image.style.margin = "10px";
 
         imageArray.push(image);
         imageContainer.appendChild(image);

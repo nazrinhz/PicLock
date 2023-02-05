@@ -5,28 +5,100 @@
   </head>
   <body>
     <div class="sidebar">
-      <div class="sidebar-item">City</div>
-      <div class="sidebar-item">Car</div>
-      <div class="sidebar-item">Dog</div>
-      <div class="sidebar-item">Camera</div>
-      <div class="sidebar-item">Smartphone</div>
-      <div class="sidebar-item">Chair</div>
-      <div class="sidebar-item">Lamp</div>
-      <div class="sidebar-item">Book</div>
-      <div class="sidebar-button" href="unlock.html">Finalize</div>
+      <div class="sidebar-item" id="city">City: <input type="text" id="city-input"> <button id="city-search-button">Search</button></div>
+      <div class="sidebar-item" id="car">Car: <input type="text" id="car-input"> <button id="car-search-button">Search</button></div>
+      <div class="sidebar-item" id="dog">Dog: <input type="text" id="dog-input"> <button id="dog-search-button">Search</button></div>
+      <div class="sidebar-item" id="camera">color: <input type="text" id="color-input"> <button id="color-search-button">Search</button></div>
+      <div class="sidebar-button" id="submit-button" type="submit"><a href="unlock.html">Finalize</a></div>
     </div>
+       
     <div class="grid-container">
-      <div class="grid-item" style="background-image: url('https://picsum.photos/200')"></div>
-      <div class="grid-item" style="background-image: url('https://picsum.photos/201')"></div>
-      <div class="grid-item" style="background-image: url('https://picsum.photos/202')"></div>
-      <div class="grid-item" style="background-image: url('https://picsum.photos/203')"></div>
-      <div class="grid-item" style="background-image: url('https://picsum.photos/204')"></div>
-      <div class="grid-item" style="background-image: url('https://picsum.photos/205')"></div>
-      <div class="grid-item" style="background-image: url('https://picsum.photos/206')"></div>
-      <div class="grid-item" style="background-image: url('https://picsum.photos/207')"></div>
-      <div class="grid-item" style="background-image: url('https://picsum.photos/208')"></div>
+      <div id="results"></div>
+      <script>
+        document.getElementById("city-search-button").addEventListener("click", function() {
+        console.log("hola");
+        myChoices(document.getElementById("city-input").value);
+        // // Perform the desired action with the inputs
+        // console.log(city, car, dog, camera);
+        });
+        document.getElementById("car-search-button").addEventListener("click", function() {
+        myChoices(document.getElementById("car-input").value);
+        // // Perform the desired action with the inputs
+        // console.log(city, car, dog, camera);
+        });
+        document.getElementById("dog-search-button").addEventListener("click", function() {
+        myChoices(document.getElementById("dog-input").value);
+        // // Perform the desired action with the inputs
+        // console.log(city, car, dog, camera);
+        });
+        document.getElementById("color-search-button").addEventListener("click", function() {
+        myChoices(document.getElementById("color-input").value);
+        // // Perform the desired action with the inputs
+        // console.log(city, car, dog, camera);
+        });
+      
+        // const car = document.getElementById("car-input").value;
+        // const dog = document.getElementById("dog-input").value;
+        // const camera = document.getElementById("camera-input").value;
+      
+        //       const searchInput = document.getElementById("searchInput");
+        // const searchButton = document.getElementById("searchButton");
+        const results = document.getElementById("results");
+        
+        const unsplashApiUrl = "https://api.unsplash.com/search/photos?query=";
+        const unsplashApiKey = "&client_id=CRt2jmfiBheRJjGv5UOwYU37x9BzZtLEbc31M_Se1L8";
+        const unsplashApi = "https://api.unsplash.com/photos/random";
+        
+        let selectedImages = [];
+        for (let i = 0; i < 15; i++) {
+        getRandomImage();
+      }
+        function myChoices(search){
+        fetch(unsplashApiUrl + search + unsplashApiKey)
+        .then(response => response.json())
+        .then(data => {
+          results.innerHTML = "";
+          for (let i = 0; i < 3; i++) {
+            const photo = data.results[i];
+            const img = document.createElement("img");
+            img.src = photo.urls.small;
+            img.alt = photo.alt_description;
+            img.style.width = "250px";
+            img.style.height = "100px";
+            img.style.margin = "10px";
+            results.appendChild(img);
+        
+            img.addEventListener("click", function() {
+              selectedImages.push(photo);
+              img.style.opacity = 0.5;
+              console.log(selectedImages);
+            });
+          }
+        });
+        }
+
+      async function getRandomImage() {
+        const response = await fetch(`${unsplashApi}?client_id=${unsplashApiKey}`);
+        const data = await response.json();
+        const imageUrl = data.urls.regular;
+
+        const image = new Image();
+        image.src = imageUrl;
+        image.alt = data.alt_description;
+        image.style.width = "300px";
+        image.style.height = "300px";
+        image.style.margin = "10px";
+
+        selectedImages.push(image);
+      }
+
+      
+      console.log(selectedImages);
+        // searchButton.addEventListener("click", function(){
+        //   myChoices(searchInput.value);
+        // });
+      </script>
+    </div>
   </body>
-  <script>
-    visual=
-  </script>
+
 </html>

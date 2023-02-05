@@ -13,17 +13,32 @@
         <div class="container">
             <h1 class="title">Select Images to Authenticate</h1>
             <div class="grid-container">
-                <div class="grid-item">
-                    <img class="image" src="placeholder.png" alt="placeholder">
-                </div>
-                <button onclick="createImage"></button>
+                <div id="grid-item"></div>
+                <script>
+                    let gridContainer = document.getElementsByClassName("grid-container");
+                    let results = document.createElement("div");
+                    results.id = "grid-item";
+                    gridContainer[0].appendChild(results);
+                    
+                    let imageList = JSON.parse(localStorage.getItem("selectedImages"));
+                    console.log(imageList);
+                    
+                    imageList.forEach(image => {
+                        console.log(image);
+                      const img = document.createElement("img");
+                      img.src = image.urls.small;
+                      img.alt = image.alt_description;
+                      img.style.width = "250px";
+                      img.style.height = "100px";
+                      img.style.margin = "10px";
+                      results.appendChild(img);
+                    });
+                    </script>
+                    
+                    
+                    
             </div>
         </div>
     </body>
-    <script>
-        function createImage(){
-            element = document.createElement("div");
-            element.setAttribute(class,"grid-item");
-        }
-    </script>
+    
 </html>

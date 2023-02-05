@@ -4,34 +4,25 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="sidebar">
-      <div class="sidebar-item" id="city">City: <input type="text" id="city-input"> <button id="city-search-button">Search</button></div>
-      <div class="sidebar-item" id="car">Car: <input type="text" id="car-input"> <button id="car-search-button">Search</button></div>
-      <div class="sidebar-item" id="dog">Dog: <input type="text" id="dog-input"> <button id="dog-search-button">Search</button></div>
-      <div class="sidebar-item" id="camera">color: <input type="text" id="color-input"> <button id="color-search-button">Search</button></div>
-      <div class="sidebar-button" id="submit-button" type="submit">Finalize</div>
-    </div>
-
-    <div class="grid-container">
-      <div id="results"></div>
+      <div class="sidebar">
+        <div class="sidebar-item" id="city">City: <input type="text" id="city-input"> <button id="city-search-button">Search</button></div>
+        <div class="sidebar-item" id="car">Car: <input type="text" id="car-input"> <button id="car-search-button">Search</button></div>
+        <div class="sidebar-item" id="camera">Color: <input type="text" id="color-input"> <button id="color-search-button">Search</button></div>
+        <div class="sidebar-button" id="submit-button" type="submit">Finalize</div>
+      </div>
+      <div id="results" class="right-column"></div>
       <script>
         document.getElementById("submit-button").addEventListener("click", function(){
           window.location.assign("unlock.html");
 
         });
         document.getElementById("city-search-button").addEventListener("click", function() {
-        console.log("hola");
         myChoices(document.getElementById("city-input").value);
         // // Perform the desired action with the inputs
         // console.log(city, car, dog, camera);
         });
         document.getElementById("car-search-button").addEventListener("click", function() {
         myChoices(document.getElementById("car-input").value);
-        // // Perform the desired action with the inputs
-        // console.log(city, car, dog, camera);
-        });
-        document.getElementById("dog-search-button").addEventListener("click", function() {
-        myChoices(document.getElementById("dog-input").value);
         // // Perform the desired action with the inputs
         // console.log(city, car, dog, camera);
         });
@@ -49,7 +40,7 @@
         // const searchButton = document.getElementById("searchButton");
         const results = document.getElementById("results");
         
-        const accessKey = "Z2LvNuaN5Z9QBD1297CX3XHzzUlMp1alIrmUS-8khg0";
+        const accessKey = "Gx2_u437Qf05VmkT_q5OV0HeyK_AZJ15KdsMzMN6ztA";
         const unsplashApiUrl = "https://api.unsplash.com/search/photos?query=";
         const unsplashApiKey = "&client_id="+accessKey; 
         const unsplashApi = "https://api.unsplash.com/photos/random";
@@ -110,7 +101,6 @@
         //   myChoices(searchInput.value);
         // });
       </script>
-    </div>
   </body>
 
 </html>

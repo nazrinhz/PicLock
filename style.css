@@ -1,15 +1,20 @@
 body {
     background-color: #333333;
+    background: rgb(54,217,182);
+    background: linear-gradient(90deg, rgb(89, 89, 90) 0%, rgba(32,152,126,1) 43%, rgba(0,212,255,1) 100%);
 }
 
 .title {
+    position: relative;
     color: white;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin-left: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 
-
+/*
 .image {
     height: 150px;
     width: 200px;
@@ -67,9 +72,7 @@ font-family: 'Cursive', Arial, sans-serif;
 position: relative;
 width: 100%;
 height: 0;
-padding-bottom: 56.25%; /* 16:9 aspect ratio */
-color: white;
-}
+padding-bottom: 56.25%; / 16:9 aspect ratio */
 
 #welcome-screen h1, #welcome-screen p {
 position: absolute;
@@ -94,3 +97,48 @@ border-radius: 25px;
 width: 50px;
 height: 50px;
 }
+
+#grid-container{
+    position: absolute;
+    margin: auto;
+    align-content: center;
+}
+  #grid-item {
+    display: grid;
+    grid-template-columns: repeat(3, 260px); 
+    grid-gap: 0px;
+    padding-left: 20%;
+  }
+
+  #grid-item img {
+    padding-left: 15%;
+    width: 100%;
+  height: 100%;
+  }
+  .sidebar-item {
+    background-color: #333;
+    color: white;
+    border: 1px solid black;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding: 10px;
+    }
+    .sidebar-button {
+    background-color: green;
+    color: white;
+    border: 1px solid black;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding: 10px;
+    }
+    .sidebar {
+        background-color: turquoise;
+        width: 200px;
+        padding: 10px;
+        }
+
+        #img{
+            width: auto;
+        }

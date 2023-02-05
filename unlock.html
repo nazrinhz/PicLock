@@ -11,7 +11,10 @@
     </head>
     <body>
         <div class="container">
-            <h1 class="title">Select Images to Authenticate</h1>
+            <div class="title">
+                <h1>Select Images to Authenticate</h1>
+            </div>
+            <!-- <h1 class="title">Select Images to Authenticate</h1> -->
             <div class="grid-container">
                 <div id="grid-item"></div>
                 <!-- <script> -->
@@ -52,6 +55,15 @@
                         let selectedImages = [];
                         
                         let imageList = JSON.parse(localStorage.getItem("selectedImages"));
+                        imageList=shuffleArray(imageList);
+                        function shuffleArray(array) {
+                            for (let i = array.length - 1; i > 0; i--) {
+                                let j = Math.floor(Math.random() * (i + 1));
+                                [array[i], array[j]] = [array[j], array[i]];
+                            }
+                            return array;
+                            }
+
                         let codeList = JSON.parse(localStorage.getItem("code"));
                         console.log(imageList);
                         let count=0, breakAll=0;
@@ -95,10 +107,12 @@
                                     }
                                 }
                                 if (breakAll === 1) {
+                                    window.location.assign("denied.html");
                                     console.log("Not a match, try again!");
                                     break;
                                 }
                                 if (i === codeList.length - 1 && breakAll === 0) {
+                                    window.location.assign("unlocked.html");
                                     console.log("Unlocked!");
                                 }
                                 }
